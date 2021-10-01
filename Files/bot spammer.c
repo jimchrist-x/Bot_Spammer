@@ -16,8 +16,9 @@ int main() {
 	int range, random_i, i=0;
 	int op_num[2];
 	FILE *fp;
-	
 	do {
+		show_time();
+		printf("\n");
 		printf("MODES:");
 		printf("\n\tA. WRITE_LETTERS");
 		printf("\n\tB. WRITE_NUMBERS");
@@ -36,6 +37,8 @@ int main() {
 		case '1':
 		case 'A':	
 			do {
+				show_time();
+				printf("\n");
 				printf("Type letters to send: ");
 				i=0;
 				str[i]=getchar();
@@ -46,10 +49,14 @@ int main() {
 				str[i]='\0';
 				system("cls");
 				fflush(stdin);
+				show_time();
+				printf("\n");
 				printf("Bot idle time before startup (seconds): ");
 				scanf("%lf", &delay);
 				system("cls");
 				fflush(stdin);
+				show_time();
+				printf("\n");
 				printf("Delay in between the message (seconds): ");
 				scanf("%lf",&msg_delay);
 				fflush(stdin);
@@ -78,14 +85,20 @@ int main() {
 		case '2':
 		case 'B':
 			do {
+				show_time();
+				printf("\n");
 				printf("Type max range of random numbers : ");
 				scanf("%d",&range);
 				system("cls");
 				fflush(stdin);
+				show_time();
+				printf("\n");
 				printf("Bot idle time before startup (seconds): ");
 				scanf("%lf", &delay);
 				system("cls");
 				fflush(stdin);
+				show_time();
+				printf("\n");
 				printf("Delay in between the message (seconds): ");
 				scanf("%lf",&msg_delay);
 				fflush(stdin);
@@ -120,6 +133,8 @@ int main() {
 		case '3':
 		case 'C':
 			do {
+				show_time();
+				printf("\n");
 				printf("File path: ");
 				i=0;
 				path[i]=getchar();
@@ -130,10 +145,14 @@ int main() {
 				path[i]='\0';
 				system("cls");
 				fflush(stdin);
+				show_time();
+				printf("\n");
 				printf("Bot idle time before startup (seconds): ");
 				scanf("%lf", &delay);
 				system("cls");
 				fflush(stdin);
+				show_time();
+				printf("\n");
 				printf("Delay in between the message (seconds): ");
 				scanf("%lf",&msg_delay);
 				fflush(stdin);
@@ -191,6 +210,8 @@ int main() {
 		case '4':
 		case 'D':
 			do {
+				show_time();
+				printf("\n");
 				printf("\n\tA. ADDITION");
 				printf("\n\tB. SUBTRACTION");
 				printf("\n\tC. MULTIPLICATION");
@@ -209,18 +230,26 @@ int main() {
 				case '1':
 				case 'A':
 					do {
+						show_time();
+						printf("\n");
 						printf("Starting number: ");
 						scanf("%d",op_num);
 						fflush(stdin);
 						system("cls");
+						show_time();
+						printf("\n");
 						printf("Amount to add per loop: ");
 						scanf("%d",&op_num[1]);
 						fflush(stdin);
 						system("cls");
+						show_time();
+						printf("\n");
 						printf("Bot idle time before startup (seconds): ");
 						scanf("%lf", &delay);
 						system("cls");
 						fflush(stdin);
+						show_time();
+						printf("\n");
 						printf("Delay in between the message (seconds): ");
 						scanf("%lf",&msg_delay);
 						fflush(stdin);
@@ -250,18 +279,26 @@ int main() {
 				case '2':
 				case 'B':
 					do {
+						show_time();
+						printf("\n");
 						printf("Starting number: ");
 						scanf("%d",op_num);
 						fflush(stdin);
 						system("cls");
+						show_time();
+						printf("\n");
 						printf("Amount to subtract per loop: ");
 						scanf("%d",&op_num[1]);
 						fflush(stdin);
 						system("cls");
+						show_time();
+						printf("\n");
 						printf("Bot idle time before startup (seconds): ");
 						scanf("%lf", &delay);
 						system("cls");
 						fflush(stdin);
+						show_time();
+						printf("\n");
 						printf("Delay in between the message (seconds): ");
 						scanf("%lf",&msg_delay);
 						fflush(stdin);
@@ -291,18 +328,26 @@ int main() {
 				case '3':
 				case 'C':
 					do {
+						show_time();
+						printf("\n");
 						printf("Starting number: ");
 						scanf("%d",op_num);
 						fflush(stdin);
 						system("cls");
+						show_time();
+						printf("\n");
 						printf("Amount to multiply per loop: ");
 						scanf("%d",&op_num[1]);
 						fflush(stdin);
 						system("cls");
+						show_time();
+						printf("\n");
 						printf("Bot idle time before startup (seconds): ");
 						scanf("%lf", &delay);
 						system("cls");
 						fflush(stdin);
+						show_time();
+						printf("\n");
 						printf("Delay in between the message (seconds): ");
 						scanf("%lf",&msg_delay);
 						fflush(stdin);
@@ -332,18 +377,26 @@ int main() {
 				case '4':
 				case 'D':
 					do {
+						show_time();
+						printf("\n");
 						printf("Starting number: ");
 						scanf("%d",op_num);
 						fflush(stdin);
 						system("cls");
+						show_time();
+						printf("\n");
 						printf("Amount to divide per loop: ");
 						scanf("%d",&op_num[1]);
 						fflush(stdin);
 						system("cls");
+						show_time();
+						printf("\n");
 						printf("Bot idle time before startup (seconds): ");
 						scanf("%lf", &delay);
 						system("cls");
 						fflush(stdin);
+						show_time();
+						printf("\n");
 						printf("Delay in between the message (seconds): ");
 						scanf("%lf",&msg_delay);
 						fflush(stdin);
@@ -373,16 +426,20 @@ int main() {
 				case '5':
 				case 'E':
 					do {
+						show_time();
+						printf("\n");
 						printf("Starting number: ");
 						scanf("%d",op_num);
 						fflush(stdin);
 						system("cls");
-						fflush(stdin);
-						system("cls");
+						show_time();
+						printf("\n");
 						printf("Bot idle time before startup (seconds): ");
 						scanf("%lf", &delay);
 						system("cls");
 						fflush(stdin);
+						show_time();
+						printf("\n");
 						printf("Delay in between the message (seconds): ");
 						scanf("%lf",&msg_delay);
 						fflush(stdin);
@@ -412,18 +469,26 @@ int main() {
 				case '6':
 				case 'F':
 					do {
+						show_time();
+						printf("\n");
 						printf("Starting number: ");
 						scanf("%d",op_num);
 						fflush(stdin);
 						system("cls");
+						show_time();
+						printf("\n");
 						printf("Amount to exponent per loop: ");
 						scanf("%d",&op_num[1]);
 						fflush(stdin);
 						system("cls");
+						show_time();
+						printf("\n");
 						printf("Bot idle time before startup (seconds): ");
 						scanf("%lf", &delay);
 						system("cls");
 						fflush(stdin);
+						show_time();
+						printf("\n");
 						printf("Delay in between the message (seconds): ");
 						scanf("%lf",&msg_delay);
 						fflush(stdin);
@@ -462,9 +527,3 @@ int main() {
 	}
 	return EXIT_SUCCESS;
 }
-
-
-
-
-
-

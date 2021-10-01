@@ -2,8 +2,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "functions.h"
+#include <time.h>
 
 
+
+void show_time(void) {
+	time_t t;
+	struct tm *time_struct;
+	time(&t);
+	time_struct=localtime(&t);
+	printf("%s",asctime(time_struct));
+}
 char strup(char s) {
 	if (s<'A'||s>'Z') {
 		s-=32;

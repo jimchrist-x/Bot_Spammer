@@ -5,3 +5,4 @@ void pressKeyB(char mk);
 void pressKeys(char *string);
 char strup(char s);
 void pressCkey(char s);
+void show_time(void);
