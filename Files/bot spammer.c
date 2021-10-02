@@ -96,9 +96,9 @@ int main() {
 						system("cls");
 					} while (op_num[0]>INT_MAX||op_num[1]>INT_MAX||op_num[0]<INT_MIN||op_num[1]<INT_MIN||delay>LONG_MAX||delay<LONG_MIN||msg_delay>LONG_MAX);
 					while (delay>0) {
-						printf("Starting in %.3lf...",delay);
-						delay-=0.025;
-						Sleep(25);
+						printf("Starting in %.1lf...",delay);
+						delay-=mil_del;
+						Sleep(mil);
 						system("cls");
 					}
 					temp_msg_delay=msg_delay;
@@ -109,9 +109,9 @@ int main() {
 						pressCkey(VK_RETURN);
 						msg_delay=temp_msg_delay;	
 						while (msg_delay>0) {
-							printf("Sending keys in %.3lf...",msg_delay);
-							Sleep(25);
-							msg_delay-=0.025;
+							printf("Sending keys in %.1lf...",msg_delay);
+							Sleep(mil);
+							msg_delay-=mil_del;
 							system("cls");
 						}
 					}
@@ -145,9 +145,9 @@ int main() {
 						system("cls");
 					} while (op_num[0]>INT_MAX||op_num[1]>INT_MAX||op_num[0]<INT_MIN||op_num[1]<INT_MIN||delay>LONG_MAX||delay<LONG_MIN||msg_delay>LONG_MAX);
 					while (delay>0) {
-						printf("Starting in %.3lf...",delay);
-						delay-=0.025;
-						Sleep(25);
+						printf("Starting in %.1lf...",delay);
+						delay-=mil_del;
+						Sleep(mil);
 						system("cls");
 					}
 					temp_msg_delay=msg_delay;
@@ -158,9 +158,9 @@ int main() {
 						pressCkey(VK_RETURN);
 						msg_delay=temp_msg_delay;	
 						while (msg_delay>0) {
-							printf("Sending keys in %.3lf...",msg_delay);
-							Sleep(25);
-							msg_delay-=0.025;
+							printf("Sending keys in %.1lf...",msg_delay);
+							Sleep(mil);
+							msg_delay-=mil_del;
 							system("cls");
 						}
 					}
@@ -194,9 +194,9 @@ int main() {
 						system("cls");
 					} while (op_num[0]>INT_MAX||op_num[1]>INT_MAX||op_num[0]<INT_MIN||op_num[1]<INT_MIN||delay>LONG_MAX||delay<LONG_MIN||msg_delay>LONG_MAX);
 					while (delay>0) {
-						printf("Starting in %.3lf...",delay);
-						delay-=0.025;
-						Sleep(25);
+						printf("Starting in %.1lf...",delay);
+						delay-=mil_del;
+						Sleep(mil);
 						system("cls");
 					}
 					temp_msg_delay=msg_delay;
@@ -207,9 +207,9 @@ int main() {
 						pressCkey(VK_RETURN);
 						msg_delay=temp_msg_delay;	
 						while (msg_delay>0) {
-							printf("Sending keys in %.3lf...",msg_delay);
-							Sleep(25);
-							msg_delay-=0.025;
+							printf("Sending keys in %.1lf...",msg_delay);
+							Sleep(mil);
+							msg_delay-=mil_del;
 							system("cls");
 						}
 					}
@@ -243,9 +243,9 @@ int main() {
 						system("cls");
 					} while (op_num[0]>INT_MAX||op_num[1]>INT_MAX||op_num[0]<INT_MIN||op_num[1]<INT_MIN||delay>LONG_MAX||delay<LONG_MIN||msg_delay>LONG_MAX);
 					while (delay>0) {
-						printf("Starting in %.3lf...",delay);
-						delay-=0.025;
-						Sleep(25);
+						printf("Starting in %.1lf...",delay);
+						delay-=mil_del;
+						Sleep(mil);
 						system("cls");
 					}
 					temp_msg_delay=msg_delay;
@@ -256,9 +256,9 @@ int main() {
 						pressCkey(VK_RETURN);
 						msg_delay=temp_msg_delay;	
 						while (msg_delay>0) {
-							printf("Sending keys in %.3lf...",msg_delay);
-							Sleep(25);
-							msg_delay-=0.025;
+							printf("Sending keys in %.1lf...",msg_delay);
+							Sleep(mil);
+							msg_delay-=mil_del;
 							system("cls");
 						}
 					}
@@ -286,9 +286,9 @@ int main() {
 						system("cls");
 					} while (op_num[0]>INT_MAX||op_num[0]<INT_MIN||delay>LONG_MAX||delay<LONG_MIN||msg_delay>LONG_MAX);
 					while (delay>0) {
-						printf("Starting in %.3lf...",delay);
-						delay-=0.025;
-						Sleep(25);
+						printf("Starting in %.1lf...",delay);
+						delay-=mil_del;
+						Sleep(mil);
 						system("cls");
 					}
 					temp_msg_delay=msg_delay;
@@ -299,9 +299,9 @@ int main() {
 						pressCkey(VK_RETURN);
 						msg_delay=temp_msg_delay;	
 						while (msg_delay>0) {
-							printf("Sending keys in %.3lf...",msg_delay);
-							Sleep(25);
-							msg_delay-=0.025;
+							printf("Sending keys in %.1lf...",msg_delay);
+							Sleep(mil);
+							msg_delay-=mil_del;
 							system("cls");
 						}
 					}
@@ -335,9 +335,9 @@ int main() {
 						system("cls");
 					} while (op_num[0]>INT_MAX||op_num[1]>INT_MAX||op_num[0]<INT_MIN||op_num[1]<INT_MIN||delay>LONG_MAX||delay<LONG_MIN||msg_delay>LONG_MAX);
 					while (delay>0) {
-						printf("Starting in %.3lf...",delay);
-						delay-=0.025;
-						Sleep(25);
+						printf("Starting in %.1lf...",delay);
+						delay-=mil_del;
+						Sleep(mil);
 						system("cls");
 					}
 					temp_msg_delay=msg_delay;
@@ -348,9 +348,9 @@ int main() {
 						pressCkey(VK_RETURN);
 						msg_delay=temp_msg_delay;	
 						while (msg_delay>0) {
-							printf("Sending keys in %.3lf...",msg_delay);
-							Sleep(25);
-							msg_delay-=0.025;
+							printf("Sending keys in %.1lf...",msg_delay);
+							Sleep(mil);
+							msg_delay-=mil_del;
 							system("cls");
 						}
 					}

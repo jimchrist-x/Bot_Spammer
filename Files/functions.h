@@ -1,6 +1,6 @@
 #define SIZE 100000
-
-
+#define mil 100
+#define mil_del 0.1
 void pressKeyB(char mk);
 void pressKeys(char *string);
 char strup(char s);

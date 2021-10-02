@@ -1,8 +1,9 @@
+#include <time.h>
 #include <windows.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include "functions.h"
-#include <time.h>
+
 
 
 
@@ -101,9 +102,9 @@ void modes(char *choice) {
 }
 void start_letloop(double *delay, double *msg_delay, double *temp_msg_delay, char *str) {
 	while ((*delay)>0) {
-		printf("Starting in %.3lf...",*delay);
-		(*delay)-=0.025;
-		Sleep(25);
+		printf("Starting in %.1lf...",*delay);
+		(*delay)-=mil_del;
+		Sleep(mil);
 		system("cls");
 	}
 	(*temp_msg_delay)=(*msg_delay);
@@ -112,18 +113,18 @@ void start_letloop(double *delay, double *msg_delay, double *temp_msg_delay, cha
 		pressCkey(VK_RETURN); // Presses the Enter btn
 		(*msg_delay)=(*temp_msg_delay);	
 		while ((*msg_delay)>0) {
-			printf("Sending keys in %.3lf...", *msg_delay);
-			Sleep(25);
-			(*msg_delay)-=0.025;
+			printf("Sending keys in %.1lf...", *msg_delay);
+			Sleep(mil);
+			(*msg_delay)-=mil_del;
 			system("cls");
 		}
 	}
 }
 void start_rloop(double *delay, double *msg_delay, double *temp_msg_delay, char *str, int *random_i, int *range) {
 	while ((*delay)>0) {
-		printf("Starting in %.3lf...",*delay);
-		(*delay)-=0.025;
-		Sleep(25);
+		printf("Starting in %.1lf...",*delay);
+		(*delay)-=mil_del;
+		Sleep(mil);
 		system("cls");
 	}
 	*temp_msg_delay=(*msg_delay);
@@ -136,9 +137,9 @@ void start_rloop(double *delay, double *msg_delay, double *temp_msg_delay, char 
 			pressCkey(VK_RETURN);
 			*msg_delay=(*temp_msg_delay);	
 			while (*msg_delay>0) {
-				printf("Sending keys in %.3lf...",*msg_delay);
-				Sleep(25);
-				*msg_delay-=0.025;
+				printf("Sending keys in %.1lf...",*msg_delay);
+				Sleep(mil);
+				*msg_delay-=mil_del;
 				system("cls");
 			}
 		}
@@ -155,9 +156,9 @@ void start_floop(FILE *fp, double *delay, double *msg_delay, double *temp_msg_de
 		exit(EXIT_FAILURE);
 	}
 	while ((*delay)>0) {
-		printf("Starting in %.3lf...",*delay);
-		*delay-=0.025;
-		Sleep(25);
+		printf("Starting in %.1lf...",*delay);
+		*delay-=mil_del;
+		Sleep(mil);
 		system("cls");
 	}
 	*temp_msg_delay=(*msg_delay);	
@@ -176,9 +177,9 @@ void start_floop(FILE *fp, double *delay, double *msg_delay, double *temp_msg_de
 		pressCkey(VK_RETURN);
 		*msg_delay=(*temp_msg_delay);
 		while (*msg_delay>0) {
-			printf("Sending keys in %.3lf...",*msg_delay);
-			Sleep(25);
-			*msg_delay-=0.025;
+			printf("Sending keys in %.1lf...",*msg_delay);
+			Sleep(mil);
+			*msg_delay-=mil_del;
 			system("cls");
 		}
 	}
