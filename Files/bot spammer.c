@@ -17,195 +17,35 @@ int main() {
 	int op_num[2];
 	FILE *fp;
 	do {
-		show_time();
-		printf("\n");
-		printf("MODES:");
-		printf("\n\tA. WRITE_LETTERS");
-		printf("\n\tB. WRITE_NUMBERS");
-		printf("\n\tC. WRITE_FILE");
-		printf("\n\tD. CUSTOM_COUNTER_MODE");
-		printf("\n\n");
-		printf("\nCHOOSE MODE: ");
-		fscanf(stdin,"%c",&choice);
-		system("cls");
-		fflush(stdin);
-		if (choice>='a'&&choice<='z') {
-			choice=strup(choice);
-		}
+		modes(&choice);
 	} while ((choice>'D'||choice<'A')&&(choice<'1'||choice>'4'));
+	
+	
 	switch(choice) {
 		case '1':
 		case 'A':	
 			do {
-				show_time();
-				printf("\n");
-				printf("Type letters to send: ");
-				i=0;
-				str[i]=getchar();
-				while (str[i]!='\n'||i>=SIZE-1) {
-					i++;
-					str[i]=getchar();
-				}
-				str[i]='\0';
-				system("cls");
-				fflush(stdin);
-				show_time();
-				printf("\n");
-				printf("Bot idle time before startup (seconds): ");
-				scanf("%lf", &delay);
-				system("cls");
-				fflush(stdin);
-				show_time();
-				printf("\n");
-				printf("Delay in between the message (seconds): ");
-				scanf("%lf",&msg_delay);
-				fflush(stdin);
-				system("cls");
+				write_letters(str);
+				timers(&delay, &msg_delay);
 			} while(delay>LONG_MAX||delay<LONG_MIN||msg_delay>LONG_MAX);
-			
-			while (delay>0) {
-				printf("Starting in %.3lf...",delay);
-				delay-=0.025;
-				Sleep(25);
-				system("cls");
-			}
-			temp_msg_delay=msg_delay;
-			while (TRUE) {
-				pressKeys(str);
-				pressCkey(VK_RETURN); // Presses the Enter btn
-				msg_delay=temp_msg_delay;	
-				while (msg_delay>0) {
-					printf("Sending keys in %.3lf...",msg_delay);
-					Sleep(25);
-					msg_delay-=0.025;
-					system("cls");
-				}
-			}
+			start_letloop(&delay, &msg_delay, &temp_msg_delay, str);
 			break;
 		case '2':
 		case 'B':
 			do {
-				show_time();
-				printf("\n");
-				printf("Type max range of random numbers : ");
-				scanf("%d",&range);
-				system("cls");
-				fflush(stdin);
-				show_time();
-				printf("\n");
-				printf("Bot idle time before startup (seconds): ");
-				scanf("%lf", &delay);
-				system("cls");
-				fflush(stdin);
-				show_time();
-				printf("\n");
-				printf("Delay in between the message (seconds): ");
-				scanf("%lf",&msg_delay);
-				fflush(stdin);
-				system("cls");
+				write_numbers(&range);
+				timers(&delay, &msg_delay);
 			} while (range>INT_MAX||range<0||delay>LONG_MAX||delay<LONG_MIN||msg_delay>LONG_MAX);
-			
-			while (delay>0) {
-				printf("Starting in %.3lf...",delay);
-				delay-=0.025;
-				Sleep(25);
-				system("cls");
-			}
-			temp_msg_delay=msg_delay;
-			srand(time(NULL));
-			while (TRUE) {
-				for (int i=0;i<10;i++) {
-					random_i=rand()%range;
-					sprintf(str,"%d",random_i);
-					pressKeys(str);
-					pressCkey(VK_RETURN);
-					msg_delay=temp_msg_delay;	
-					while (msg_delay>0) {
-						printf("Sending keys in %.3lf...",msg_delay);
-						Sleep(25);
-						msg_delay-=0.025;
-						system("cls");
-					}
-				}
-				srand(time(NULL));
-			}
+			start_rloop(&delay, &msg_delay, &temp_msg_delay, str, &random_i, &range);
 			break;
 		case '3':
 		case 'C':
 			do {
-				show_time();
-				printf("\n");
-				printf("File path: ");
-				i=0;
-				path[i]=getchar();
-				while (path[i]!='\n'||i>=SIZE-1) {
-					i++;
-					path[i]=getchar();
-				}
-				path[i]='\0';
-				system("cls");
-				fflush(stdin);
-				show_time();
-				printf("\n");
-				printf("Bot idle time before startup (seconds): ");
-				scanf("%lf", &delay);
-				system("cls");
-				fflush(stdin);
-				show_time();
-				printf("\n");
-				printf("Delay in between the message (seconds): ");
-				scanf("%lf",&msg_delay);
-				fflush(stdin);
-				system("cls");
+				write_file(path);
+				timers(&delay, &msg_delay);
 			} while(delay>LONG_MAX||delay<LONG_MIN||msg_delay>LONG_MAX||msg_delay<LONG_MIN);
-			i=0;
-			while (path[i]!='\0') {
-				if (path[i]=='\\') {
-					formatted_path[i]=path[i];
-					i++;	
-					formatted_path[i]=='\\';
-				}
-				else {
-					formatted_path[i]=path[i];
-					i++;
-				}
-			}
-			fp=fopen(path,"r");
-			if (!fp) {
-				printf("Errno : %d",errno);
-				printf("\nCould not open file error!\n\n");
-				system("pause");
-				exit(EXIT_FAILURE);
-			}
-			while (delay>0) {
-				printf("Starting in %.3lf...",delay);
-				delay-=0.025;
-				Sleep(25);
-				system("cls");
-			}
-			temp_msg_delay=msg_delay;	
-			while (TRUE) {
-				i=0;
-				str[i]=fgetc(fp);
-				while (str[i]!='\n'||i>=SIZE-1) {
-					i++;
-					str[i]=fgetc(fp);
-					if (feof(fp)) {
-						fseek(fp,0,SEEK_SET);
-					}
-				}
-				str[i]='\0';
-				pressKeys(str);
-				pressCkey(VK_RETURN);
-				msg_delay=temp_msg_delay;
-				while (msg_delay>0) {
-					printf("Sending keys in %.3lf...",msg_delay);
-					Sleep(25);
-					msg_delay-=0.025;
-					system("cls");
-				}
-			}
-			fclose(fp);
+			format_path(path, formatted_path);		
+			start_floop(fp, &delay, &msg_delay, &temp_msg_delay, str, path);
 			break;
 		case '4':
 		case 'D':
