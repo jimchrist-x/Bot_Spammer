@@ -15,3 +15,18 @@ void start_floop(FILE *fp, double *delay, double *msg_delay, double *temp_msg_de
 void write_letters(char *str);
 void write_numbers(int *range);
 void write_file(char *path);
+void counter_mode_modes(char *choice2);
+void write_addition_mode(int *op_num);
+void write_subtraction_mode(int *op_num);
+void write_multiplication_mode(int *op_num);
+void write_division_mode(int *op_num);
+void write_square_root_mode(int *op_num);
+void write_expontetiation_mode(int *op_num);
+void start_aloop_mode(double *delay, double *msg_delay, double *temp_msg_delay, char *str, int *op_num);
+void start_sloop_mode(double *delay, double *msg_delay, double *temp_msg_delay, char *str, int *op_num);
+void start_mloop_mode(double *delay, double *msg_delay, double *temp_msg_delay, char *str, int *op_num);
+void start_dloop_mode(double *delay, double *msg_delay, double *temp_msg_delay, char *str, int *op_num);
+void start_srloop_mode(double *delay, double *msg_delay, double *temp_msg_delay, char *str, int *op_num);
+void start_eloop_mode(double *delay, double *msg_delay, double *temp_msg_delay, char *str, int *op_num);
+
+

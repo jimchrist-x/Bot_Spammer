@@ -74,7 +74,7 @@ void format_path(char *path, char *formatted_path) {
 	while (path[i]!='\0') {
 		if (path[i]=='\\') {
 			formatted_path[i]=path[i];
-			i++;	
+			i++;
 			formatted_path[i]=='\\';
 		}
 		else {
@@ -111,7 +111,7 @@ void start_letloop(double *delay, double *msg_delay, double *temp_msg_delay, cha
 	while (TRUE) {
 		pressKeys(str);
 		pressCkey(VK_RETURN); // Presses the Enter btn
-		(*msg_delay)=(*temp_msg_delay);	
+		(*msg_delay)=(*temp_msg_delay);
 		while ((*msg_delay)>0) {
 			printf("Sending keys in %.1lf...", *msg_delay);
 			Sleep(mil);
@@ -135,7 +135,7 @@ void start_rloop(double *delay, double *msg_delay, double *temp_msg_delay, char 
 			sprintf(str,"%d",*random_i);
 			pressKeys(str);
 			pressCkey(VK_RETURN);
-			*msg_delay=(*temp_msg_delay);	
+			*msg_delay=(*temp_msg_delay);
 			while (*msg_delay>0) {
 				printf("Sending keys in %.1lf...",*msg_delay);
 				Sleep(mil);
@@ -161,7 +161,7 @@ void start_floop(FILE *fp, double *delay, double *msg_delay, double *temp_msg_de
 		Sleep(mil);
 		system("cls");
 	}
-	*temp_msg_delay=(*msg_delay);	
+	*temp_msg_delay=(*msg_delay);
 	while (TRUE) {
 		i=0;
 		str[i]=fgetc(fp);
@@ -183,7 +183,7 @@ void start_floop(FILE *fp, double *delay, double *msg_delay, double *temp_msg_de
 			system("cls");
 		}
 	}
-	fclose(fp);	
+	fclose(fp);
 }
 void write_letters(char *str) {
 	int i=0;
@@ -221,3 +221,232 @@ void write_file(char *path) {
 	system("cls");
 	fflush(stdin);
 }
+void counter_mode_modes(char *choice2) {
+    show_time();
+    printf("\n");
+    printf("\n\tA. ADDITION");
+    printf("\n\tB. SUBTRACTION");
+    printf("\n\tC. MULTIPLICATION");
+    printf("\n\tD. DIVISION");
+    printf("\n\tE. SQUARE_ROOT");
+    printf("\n\tF. EXPONTETIATION");
+    printf("\n\nChoose operation: ");
+    scanf("%c",choice2);
+    fflush(stdin);
+    system("cls");
+    if (*choice2>='a'&&(*choice2)<='z') {
+        *choice2=strup(*choice2);
+    }
+
+}
+void write_addition_mode(int *op_num) {
+    show_time();
+    printf("\n");
+    printf("Starting number: ");
+    scanf("%d",op_num);
+    fflush(stdin);
+    system("cls");
+    show_time();
+    printf("\n");
+    printf("Amount to add per loop: ");
+    scanf("%d",&op_num[1]);
+    fflush(stdin);
+    system("cls");
+}
+void write_subtraction_mode(int *op_num) {
+    show_time();
+    printf("\n");
+    printf("Starting number: ");
+    scanf("%d",op_num);
+    fflush(stdin);
+    system("cls");
+    show_time();
+    printf("\n");
+    printf("Amount to subtract per loop: ");
+    scanf("%d",&op_num[1]);
+    fflush(stdin);
+    system("cls");
+}
+void write_multiplication_mode(int *op_num) {
+    show_time();
+    printf("\n");
+    printf("Starting number: ");
+    scanf("%d",op_num);
+    fflush(stdin);
+    system("cls");
+    show_time();
+    printf("\n");
+    printf("Amount to multiply per loop: ");
+    scanf("%d",&op_num[1]);
+    fflush(stdin);
+    system("cls");
+}
+void write_division_mode(int *op_num) {
+    show_time();
+    printf("\n");
+    printf("Starting number: ");
+    scanf("%d",op_num);
+    fflush(stdin);
+    system("cls");
+    show_time();
+    printf("\n");
+    printf("Amount to divide per loop: ");
+    scanf("%d",&op_num[1]);
+    fflush(stdin);
+    system("cls");
+}
+void write_square_root_mode(int *op_num) {
+    show_time();
+    printf("\n");
+    printf("Starting number: ");
+    scanf("%d",op_num);
+    fflush(stdin);
+    system("cls");
+}
+void write_expontetiation_mode(int *op_num) {
+    show_time();
+    printf("\n");
+    printf("Starting number: ");
+    scanf("%d",op_num);
+    fflush(stdin);
+    system("cls");
+    show_time();
+    printf("\n");
+    printf("Amount to exponent per loop: ");
+    scanf("%d",&op_num[1]);
+    fflush(stdin);
+    system("cls");
+}
+void start_aloop_mode(double *delay, double *msg_delay, double *temp_msg_delay, char *str, int *op_num) {
+    while ((*delay)>0) {
+        printf("Starting in %.llf...",*delay);
+        *delay-=mil_del;
+        Sleep(mil);
+        system("cls");
+    }
+    *temp_msg_delay=(*msg_delay);
+    while (TRUE) {
+        op_num[0] += op_num[1];
+        sprintf(str,"%d",op_num[0]);
+        pressKeys(str);
+        pressCkey(VK_RETURN);
+        *msg_delay=(*temp_msg_delay);
+        while (*msg_delay>0) {
+            printf("Sending keys in %.1lf...",*msg_delay);
+            Sleep(mil);
+            *msg_delay-=mil_del;
+            system("cls");
+        }
+    }
+}
+void start_sloop_mode(double *delay, double *msg_delay, double *temp_msg_delay, char *str, int *op_num) {
+    while (*delay>0) {
+        printf("Starting in %.1lf...", *delay);
+        *delay-=mil_del;
+        Sleep(mil);
+        system("cls");
+    }
+    *temp_msg_delay=(*msg_delay);
+    while (TRUE) {
+        op_num[0] -= op_num[1];
+        sprintf(str,"%d",op_num[0]);
+        pressKeys(str);
+        pressCkey(VK_RETURN);
+        *msg_delay=(*temp_msg_delay);
+        while (*msg_delay>0) {
+            printf("Sending keys in %.1lf...", *msg_delay);
+            Sleep(mil);
+            *msg_delay-=mil_del;
+            system("cls");
+        }
+    }
+}
+void start_mloop_mode(double *delay, double *msg_delay, double *temp_msg_delay, char *str, int *op_num) {
+    while (*delay>0) {
+        printf("Starting in %.1lf...", *delay);
+        *delay-=mil_del;
+        Sleep(mil);
+        system("cls");
+    }
+    *temp_msg_delay=(*msg_delay);
+    while (TRUE) {
+        op_num[0] = op_num[0] * op_num[1];
+        sprintf(str,"%d",op_num[0]);
+        pressKeys(str);
+        pressCkey(VK_RETURN);
+        *msg_delay=(*temp_msg_delay);
+        while (*msg_delay>0) {
+            printf("Sending keys in %.1lf...",*msg_delay);
+            Sleep(mil);
+            *msg_delay-=mil_del;
+            system("cls");
+        }
+    }
+}
+void start_dloop_mode(double *delay, double *msg_delay, double *temp_msg_delay, char *str, int *op_num) {
+    while (*delay>0) {
+        printf("Starting in %.1lf...", *delay);
+        *delay-=mil_del;
+        Sleep(mil);
+        system("cls");
+    }
+    *temp_msg_delay=(*msg_delay);
+    while (TRUE) {
+        op_num[0] = op_num[0] / op_num[1];
+        sprintf(str,"%d",op_num[0]);
+        pressKeys(str);
+        pressCkey(VK_RETURN);
+        *msg_delay=(*temp_msg_delay);
+        while (*msg_delay>0) {
+            printf("Sending keys in %.1lf...",*msg_delay);
+            Sleep(mil);
+            *msg_delay-=mil_del;
+            system("cls");
+        }
+    }
+}
+void start_srloop_mode(double *delay, double *msg_delay, double *temp_msg_delay, char *str, int *op_num) {
+    while (*delay>0) {
+        printf("Starting in %.1lf...", *delay);
+        *delay-=mil_del;
+        Sleep(mil);
+        system("cls");
+    }
+    *temp_msg_delay=(*msg_delay);
+    while (TRUE) {
+        op_num[0] = sqrt(op_num[0]);
+        sprintf(str,"%d",op_num[0]);
+        pressKeys(str);
+        pressCkey(VK_RETURN);
+        *msg_delay=(*temp_msg_delay);
+        while (*msg_delay>0) {
+            printf("Sending keys in %.1lf...", *msg_delay);
+            Sleep(mil);
+            *msg_delay-=mil_del;
+            system("cls");
+        }
+    }
+}
+void start_eloop_mode(double *delay, double *msg_delay, double *temp_msg_delay, char *str, int *op_num) {
+    while (*delay>0) {
+        printf("Starting in %.1lf...", *delay);
+        *delay-=mil_del;
+        Sleep(mil);
+        system("cls");
+    }
+    *temp_msg_delay=(*msg_delay);
+    while (TRUE) {
+        op_num[0] = pow(op_num[0], op_num[1]);
+        sprintf(str,"%d",op_num[0]);
+        pressKeys(str);
+        pressCkey(VK_RETURN);
+        *msg_delay=(*temp_msg_delay);
+        while (*msg_delay>0) {
+            printf("Sending keys in %.1lf...", *msg_delay);
+            Sleep(mil);
+            *msg_delay-=mil_del;
+            system("cls");
+        }
+    }
+}
+
