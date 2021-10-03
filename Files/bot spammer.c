@@ -6,6 +6,7 @@
 #include <time.h>
 #include <limits.h>
 #include <errno.h>
+#include <gmp.h>
 #include "functions.h"
 
 
@@ -19,11 +20,11 @@ int main() {
 	do {
 		modes(&choice);
 	} while ((choice>'D'||choice<'A')&&(choice<'1'||choice>'4'));
-	
-	
+
+
 	switch(choice) {
 		case '1':
-		case 'A':	
+		case 'A':
 			do {
 				write_letters(str);
 				timers(&delay, &msg_delay);
@@ -44,7 +45,7 @@ int main() {
 				write_file(path);
 				timers(&delay, &msg_delay);
 			} while(delay>LONG_MAX||delay<LONG_MIN||msg_delay>LONG_MAX||msg_delay<LONG_MIN);
-			format_path(path, formatted_path);		
+			format_path(path, formatted_path);
 			start_floop(fp, &delay, &msg_delay, &temp_msg_delay, str, path);
 			break;
 		case '4':
@@ -107,7 +108,7 @@ int main() {
 						sprintf(str,"%d",op_num[0]);
 						pressKeys(str);
 						pressCkey(VK_RETURN);
-						msg_delay=temp_msg_delay;	
+						msg_delay=temp_msg_delay;
 						while (msg_delay>0) {
 							printf("Sending keys in %.1lf...",msg_delay);
 							Sleep(mil);
@@ -156,7 +157,7 @@ int main() {
 						sprintf(str,"%d",op_num[0]);
 						pressKeys(str);
 						pressCkey(VK_RETURN);
-						msg_delay=temp_msg_delay;	
+						msg_delay=temp_msg_delay;
 						while (msg_delay>0) {
 							printf("Sending keys in %.1lf...",msg_delay);
 							Sleep(mil);
@@ -205,7 +206,7 @@ int main() {
 						sprintf(str,"%d",op_num[0]);
 						pressKeys(str);
 						pressCkey(VK_RETURN);
-						msg_delay=temp_msg_delay;	
+						msg_delay=temp_msg_delay;
 						while (msg_delay>0) {
 							printf("Sending keys in %.1lf...",msg_delay);
 							Sleep(mil);
@@ -254,7 +255,7 @@ int main() {
 						sprintf(str,"%d",op_num[0]);
 						pressKeys(str);
 						pressCkey(VK_RETURN);
-						msg_delay=temp_msg_delay;	
+						msg_delay=temp_msg_delay;
 						while (msg_delay>0) {
 							printf("Sending keys in %.1lf...",msg_delay);
 							Sleep(mil);
@@ -297,7 +298,7 @@ int main() {
 						sprintf(str,"%d",op_num[0]);
 						pressKeys(str);
 						pressCkey(VK_RETURN);
-						msg_delay=temp_msg_delay;	
+						msg_delay=temp_msg_delay;
 						while (msg_delay>0) {
 							printf("Sending keys in %.1lf...",msg_delay);
 							Sleep(mil);
@@ -346,7 +347,7 @@ int main() {
 						sprintf(str,"%d",op_num[0]);
 						pressKeys(str);
 						pressCkey(VK_RETURN);
-						msg_delay=temp_msg_delay;	
+						msg_delay=temp_msg_delay;
 						while (msg_delay>0) {
 							printf("Sending keys in %.1lf...",msg_delay);
 							Sleep(mil);
@@ -355,9 +356,9 @@ int main() {
 						}
 					}
 					break;
-					
-					
-					
+
+
+
 				default:
 					break;
 			}
