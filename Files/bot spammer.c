@@ -12,14 +12,14 @@
 
 int main() {
 	char str[SIZE], path[SIZE],formatted_path[SIZE];
-	char choice, choice2;
+	char choice,choice2,choice3;
 	double delay, msg_delay,temp_msg_delay;
 	int range, random_i, i=0;
 	int op_num[2];
 	FILE *fp;
 	do {
 		modes(&choice);
-	} while ((choice>'D'||choice<'A')&&(choice<'1'||choice>'4'));
+	} while ((choice>'E'||choice<'A')&&(choice<'1'||choice>'5'));
 
 
 	switch(choice) {
@@ -109,6 +109,33 @@ int main() {
 					break;
 			}
 			break;
+        case '5':
+        case 'E':
+            do {
+                hotkey_modes(&choice3);
+            } while((choice3>'D'||choice3<'A')&&(choice3<'1'||choice3>'4'));
+            switch(choice3) {
+                case '1':
+                case 'A':
+                    hotkey_ctrl_reg();
+                    break;
+                case '2':
+                case 'B':
+                    hotkey_alt_reg();
+                    break;
+                case '3':
+                case 'C':
+                    hotkey_shift_reg();
+                    break;
+                case '4':
+                case 'D':
+                    hotkey_win_reg();
+                    break;
+                default:
+                    break;
+            }
+            break;
+
 		default:
 			break;
 	}

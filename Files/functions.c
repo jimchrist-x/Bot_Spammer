@@ -3,9 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "functions.h"
-
-
-
+#include <conio.h>
 
 void show_time(void) {
 	time_t t;
@@ -91,6 +89,7 @@ void modes(char *choice) {
 	printf("\n\tB. WRITE_NUMBERS");
 	printf("\n\tC. WRITE_FILE");
 	printf("\n\tD. CUSTOM_COUNTER_MODE");
+	printf("\n\tE. SET_HOTKEY");
 	printf("\n\n");
 	printf("\nCHOOSE MODE: ");
 	fscanf(stdin,"%c",choice);
@@ -449,4 +448,121 @@ void start_eloop_mode(double *delay, double *msg_delay, double *temp_msg_delay, 
         }
     }
 }
+void hotkey_modes(char *choice3) {
+    show_time();
+    printf("\n");
+    printf("Choose first key: ");
+    printf("\n\tA. CTRL");
+    printf("\n\tB. ALT");
+    printf("\n\tC. SHIFT");
+    printf("\n\tD. WIN");
+    printf("\n\n");
+    printf(": ");
+    scanf("%c", choice3);
+    fflush(stdin);
+    system("cls");
+    if ((*choice3)>='a'&&(*choice3)<='z') {
+		*choice3=strup(*choice3);
+	}
+}
+void hotkey_ctrl_reg(void) {
+    BOOL hotkey_val;
+	char sec_hotkey;
+	UINT sec_hotkey_vk_code;
 
+
+    show_time();
+    printf("\n");
+    printf("Type secondary key: ");
+    scanf("%c", &sec_hotkey);
+    fflush(stdin);
+    system("cls");
+    sec_hotkey_vk_code=VkKeyScan(sec_hotkey);
+    hotkey_val=RegisterHotKey(NULL, 1, MOD_CONTROL | MOD_NOREPEAT, sec_hotkey_vk_code);
+    if (!hotkey_val) {
+        printf("Error Registering Hotkey!\n");
+        system("pause");
+        exit(EXIT_FAILURE);
+    }
+
+}
+void hotkey_alt_reg(void) {
+    BOOL hotkey_val;
+	char sec_hotkey;
+	UINT sec_hotkey_vk_code;
+
+
+    show_time();
+    printf("\n");
+    printf("Type secondary key: ");
+    scanf("%c", &sec_hotkey);
+    fflush(stdin);
+    system("cls");
+    sec_hotkey_vk_code=VkKeyScan(sec_hotkey);
+    hotkey_val=RegisterHotKey(NULL, 1, MOD_ALT | MOD_NOREPEAT, sec_hotkey_vk_code);
+    if (!hotkey_val) {
+        printf("Error Registering Hotkey!\n");
+        system("pause");
+        exit(EXIT_FAILURE);
+    }
+
+
+}
+void hotkey_shift_reg(void) {
+    BOOL hotkey_val;
+	char sec_hotkey;
+	UINT sec_hotkey_vk_code;
+
+
+    show_time();
+    printf("\n");
+    printf("Type secondary key: ");
+    scanf("%c", &sec_hotkey);
+    fflush(stdin);
+    system("cls");
+    sec_hotkey_vk_code=VkKeyScan(sec_hotkey);
+    hotkey_val=RegisterHotKey(NULL, 1, MOD_SHIFT | MOD_NOREPEAT, sec_hotkey_vk_code);
+    if (!hotkey_val) {
+        printf("Error Registering Hotkey!\n");
+        system("pause");
+        exit(EXIT_FAILURE);
+    }
+
+}
+
+void hotkey_win_reg(void) {
+    BOOL hotkey_val;
+	char sec_hotkey;
+	UINT sec_hotkey_vk_code;
+
+
+    show_time();
+    printf("\n");
+    printf("Type secondary key: ");
+    scanf("%c", &sec_hotkey);
+    fflush(stdin);
+    system("cls");
+    sec_hotkey_vk_code=VkKeyScan(sec_hotkey);
+    hotkey_val=RegisterHotKey(NULL, 1, MOD_WIN | MOD_NOREPEAT, sec_hotkey_vk_code);
+    if (!hotkey_val) {
+        printf("Error Registering Hotkey!\n");
+        system("pause");
+        exit(EXIT_FAILURE);
+    }
+
+
+}
+void hotkey(void) {
+    MSG msg;
+
+    if (PeekMessage(&msg, NULL, NULL, NULL, PM_REMOVE)>0) {
+        if(msg.message == WM_HOTKEY) {
+            switch(msg.wParam) {
+                case 1:
+                    system("pause");
+            }
+        }
+    }
+
+
+}

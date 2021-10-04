@@ -1,6 +1,7 @@
 #define SIZE 100000
 #define mil 100
 #define mil_del 0.1
+#define MOD_NOREPEAT 0x4000
 void pressKeyB(char mk);
 void pressKeys(char *string);
 char strup(char s);
@@ -28,5 +29,9 @@ void start_mloop_mode(double *delay, double *msg_delay, double *temp_msg_delay, 
 void start_dloop_mode(double *delay, double *msg_delay, double *temp_msg_delay, char *str, int *op_num);
 void start_srloop_mode(double *delay, double *msg_delay, double *temp_msg_delay, char *str, int *op_num);
 void start_eloop_mode(double *delay, double *msg_delay, double *temp_msg_delay, char *str, int *op_num);
-
-
+void hotkey_modes(char *choice3);
+void hotkey_ctrl_reg(void);
+void hotkey_alt_reg(void);
+void hotkey_shift_reg(void);
+void hotkey_win_reg(void);
+void hotkey(void);
