@@ -2,8 +2,10 @@
 #include <windows.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include "functions.h"
 #include <conio.h>
+#include <gmp.h>
+#include "functions.h"
+
 
 void show_time(void) {
 	time_t t;
@@ -233,8 +235,8 @@ void counter_mode_modes(char *choice2) {
     printf("\n\tB. SUBTRACTION");
     printf("\n\tC. MULTIPLICATION");
     printf("\n\tD. DIVISION");
-    printf("\n\tE. SQUARE_ROOT");
-    printf("\n\tF. EXPONTETIATION");
+    //printf("\n\tE. SQUARE_ROOT");
+    printf("\n\tE. EXPONTETIATION");
     printf("\n\nChoose operation: ");
     scanf("%c",choice2);
     fflush(stdin);
@@ -244,96 +246,96 @@ void counter_mode_modes(char *choice2) {
     }
 
 }
-void write_addition_mode(int *op_num) {
+void write_addition_mode(mpq_t *op_num) {
     show_time();
     printf("\n");
     printf("Starting number: ");
-    scanf("%d",op_num);
+    gmp_scanf("%Qd",op_num);
     fflush(stdin);
     system("cls");
     show_time();
     printf("\n");
     printf("Amount to add per loop: ");
-    scanf("%d",&op_num[1]);
+    gmp_scanf("%Qd",&op_num[1]);
     fflush(stdin);
     system("cls");
 }
-void write_subtraction_mode(int *op_num) {
+void write_subtraction_mode(mpq_t *op_num) {
     show_time();
     printf("\n");
     printf("Starting number: ");
-    scanf("%d",op_num);
+    gmp_scanf("%Qd",op_num);
     fflush(stdin);
     system("cls");
     show_time();
     printf("\n");
     printf("Amount to subtract per loop: ");
-    scanf("%d",&op_num[1]);
+    gmp_scanf("%Qd",&op_num[1]);
     fflush(stdin);
     system("cls");
 }
-void write_multiplication_mode(int *op_num) {
+void write_multiplication_mode(mpq_t *op_num) {
     show_time();
     printf("\n");
     printf("Starting number: ");
-    scanf("%d",op_num);
+    gmp_scanf("%Qd",op_num);
     fflush(stdin);
     system("cls");
     show_time();
     printf("\n");
     printf("Amount to multiply per loop: ");
-    scanf("%d",&op_num[1]);
+    gmp_scanf("%Qd",&op_num[1]);
     fflush(stdin);
     system("cls");
 }
-void write_division_mode(int *op_num) {
+void write_division_mode(mpq_t *op_num) {
     show_time();
     printf("\n");
     printf("Starting number: ");
-    scanf("%d",op_num);
+    gmp_scanf("%Qd",op_num);
     fflush(stdin);
     system("cls");
     show_time();
     printf("\n");
     printf("Amount to divide per loop: ");
-    scanf("%d",&op_num[1]);
+    gmp_scanf("%Qd",&op_num[1]);
     fflush(stdin);
     system("cls");
 }
-void write_square_root_mode(int *op_num) {
+/*void write_square_root_mode(mpq_t *op_num) {
     show_time();
     printf("\n");
     printf("Starting number: ");
-    scanf("%d",op_num);
+    gmp_scanf("%Qd",op_num);
     fflush(stdin);
     system("cls");
-}
-void write_expontetiation_mode(int *op_num) {
+}*/
+void write_expontetiation_mode(mpq_t *op_num) {
     show_time();
     printf("\n");
     printf("Starting number: ");
-    scanf("%d",op_num);
+    gmp_scanf("%Qd",op_num);
     fflush(stdin);
     system("cls");
     show_time();
     printf("\n");
     printf("Amount to exponent per loop: ");
-    scanf("%d",&op_num[1]);
+    gmp_scanf("%Qd",&op_num[1]);
     fflush(stdin);
     system("cls");
 }
-void start_aloop_mode(double *delay, double *msg_delay, double *temp_msg_delay, char *str, int *op_num) {
+void start_aloop_mode(double *delay, double *msg_delay, double *temp_msg_delay, char *str, mpq_t *op_num) {
     while ((*delay)>0) {
         hotkey();
-        printf("Starting in %.llf...",*delay);
+        printf("Starting in %.1lf...",*delay);
         *delay-=mil_del;
         Sleep(mil);
         system("cls");
     }
     *temp_msg_delay=(*msg_delay);
     while (TRUE) {
-        op_num[0] += op_num[1];
-        sprintf(str,"%d",op_num[0]);
+        mpq_add(op_num[0], op_num[0], op_num[1]);
+        gmp_sprintf(str, "%Qd", op_num[0]);
         pressKeys(str);
         pressCkey(VK_RETURN);
         *msg_delay=(*temp_msg_delay);
@@ -346,7 +348,7 @@ void start_aloop_mode(double *delay, double *msg_delay, double *temp_msg_delay, 
         }
     }
 }
-void start_sloop_mode(double *delay, double *msg_delay, double *temp_msg_delay, char *str, int *op_num) {
+void start_sloop_mode(double *delay, double *msg_delay, double *temp_msg_delay, char *str, mpq_t *op_num) {
     while (*delay>0) {
         hotkey();
         printf("Starting in %.1lf...", *delay);
@@ -356,8 +358,8 @@ void start_sloop_mode(double *delay, double *msg_delay, double *temp_msg_delay, 
     }
     *temp_msg_delay=(*msg_delay);
     while (TRUE) {
-        op_num[0] -= op_num[1];
-        sprintf(str,"%d",op_num[0]);
+        mpq_sub(op_num[0], op_num[0], op_num[1]);
+        gmp_sprintf(str, "%Qd", op_num[0]);
         pressKeys(str);
         pressCkey(VK_RETURN);
         *msg_delay=(*temp_msg_delay);
@@ -370,7 +372,7 @@ void start_sloop_mode(double *delay, double *msg_delay, double *temp_msg_delay, 
         }
     }
 }
-void start_mloop_mode(double *delay, double *msg_delay, double *temp_msg_delay, char *str, int *op_num) {
+void start_mloop_mode(double *delay, double *msg_delay, double *temp_msg_delay, char *str, mpq_t *op_num) {
     while (*delay>0) {
         hotkey();
         printf("Starting in %.1lf...", *delay);
@@ -380,8 +382,8 @@ void start_mloop_mode(double *delay, double *msg_delay, double *temp_msg_delay, 
     }
     *temp_msg_delay=(*msg_delay);
     while (TRUE) {
-        op_num[0] = op_num[0] * op_num[1];
-        sprintf(str,"%d",op_num[0]);
+        mpq_mul(op_num[0], op_num[0], op_num[1]);
+        gmp_sprintf(str, "%Qd", op_num[0]);
         pressKeys(str);
         pressCkey(VK_RETURN);
         *msg_delay=(*temp_msg_delay);
@@ -394,7 +396,7 @@ void start_mloop_mode(double *delay, double *msg_delay, double *temp_msg_delay, 
         }
     }
 }
-void start_dloop_mode(double *delay, double *msg_delay, double *temp_msg_delay, char *str, int *op_num) {
+void start_dloop_mode(double *delay, double *msg_delay, double *temp_msg_delay, char *str, mpq_t *op_num) {
     while (*delay>0) {
         hotkey();
         printf("Starting in %.1lf...", *delay);
@@ -404,8 +406,8 @@ void start_dloop_mode(double *delay, double *msg_delay, double *temp_msg_delay, 
     }
     *temp_msg_delay=(*msg_delay);
     while (TRUE) {
-        op_num[0] = op_num[0] / op_num[1];
-        sprintf(str,"%d",op_num[0]);
+        mpq_div(op_num[0], op_num[0], op_num[1]);
+        gmp_sprintf(str, "%Qd", op_num[0]);
         pressKeys(str);
         pressCkey(VK_RETURN);
         *msg_delay=(*temp_msg_delay);
@@ -418,7 +420,7 @@ void start_dloop_mode(double *delay, double *msg_delay, double *temp_msg_delay, 
         }
     }
 }
-void start_srloop_mode(double *delay, double *msg_delay, double *temp_msg_delay, char *str, int *op_num) {
+/*void start_srloop_mode(double *delay, double *msg_delay, double *temp_msg_delay, char *str, mpq_t *op_num) {
     while (*delay>0) {
         hotkey();
         printf("Starting in %.1lf...", *delay);
@@ -429,7 +431,7 @@ void start_srloop_mode(double *delay, double *msg_delay, double *temp_msg_delay,
     *temp_msg_delay=(*msg_delay);
     while (TRUE) {
         op_num[0] = sqrt(op_num[0]);
-        sprintf(str,"%d",op_num[0]);
+        gmp_sprintf(str, "%Qd", op_num[0]);
         pressKeys(str);
         pressCkey(VK_RETURN);
         *msg_delay=(*temp_msg_delay);
@@ -441,8 +443,9 @@ void start_srloop_mode(double *delay, double *msg_delay, double *temp_msg_delay,
             system("cls");
         }
     }
-}
-void start_eloop_mode(double *delay, double *msg_delay, double *temp_msg_delay, char *str, int *op_num) {
+}*/
+void start_eloop_mode(double *delay, double *msg_delay, double *temp_msg_delay, char *str, mpq_t *op_num) {
+    int i;
     while (*delay>0) {
         hotkey();
         printf("Starting in %.1lf...", *delay);
@@ -452,8 +455,10 @@ void start_eloop_mode(double *delay, double *msg_delay, double *temp_msg_delay, 
     }
     *temp_msg_delay=(*msg_delay);
     while (TRUE) {
-        op_num[0] = pow(op_num[0], op_num[1]);
-        sprintf(str,"%d",op_num[0]);
+        for (i=1;i<mpq_get_d(op_num[1]);i++) {
+            mpq_mul(op_num[0], op_num[0], op_num[0]);
+        }
+        gmp_sprintf(str, "%Qd", op_num[0]);
         pressKeys(str);
         pressCkey(VK_RETURN);
         *msg_delay=(*temp_msg_delay);

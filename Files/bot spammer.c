@@ -11,12 +11,18 @@
 
 
 int main() {
+    FILE *fp;
 	char str[SIZE], path[SIZE],formatted_path[SIZE];
 	char choice,choice2,choice3;
 	double delay, msg_delay,temp_msg_delay;
+	mpq_t op_num[2];
 	int range, random_i, i=0;
-	int op_num[2];
-	FILE *fp;
+
+
+	for (i=0;i<2;i++) {
+        mpq_init(op_num[i]);
+	}
+
 	while (TRUE) {
         do {
             modes(&choice);
@@ -52,14 +58,14 @@ int main() {
             case 'D':
                 do {
                     counter_mode_modes(&choice2);
-                } while ((choice2<'A'||choice2>'F')&&(choice2<'1'||choice2>'6'));
+                } while ((choice2<'A'||choice2>'E')&&(choice2<'1'||choice2>'5'));
                 switch(choice2) {
                     case '1':
                     case 'A':
                         do {
                             write_addition_mode(op_num);
                             timers(&delay, &msg_delay);
-                        } while (op_num[0]>INT_MAX||op_num[1]>INT_MAX||op_num[0]<INT_MIN||op_num[1]<INT_MIN||delay>LONG_MAX||delay<LONG_MIN||msg_delay>LONG_MAX);
+                        } while (delay>LONG_MAX||delay<LONG_MIN||msg_delay>LONG_MAX);
                         start_aloop_mode(&delay, &msg_delay, &temp_msg_delay, str, op_num);
                         break;
                     case '2':
@@ -67,7 +73,7 @@ int main() {
                         do {
                             write_subtraction_mode(op_num);
                             timers(&delay, &msg_delay);
-                        } while (op_num[0]>INT_MAX||op_num[1]>INT_MAX||op_num[0]<INT_MIN||op_num[1]<INT_MIN||delay>LONG_MAX||delay<LONG_MIN||msg_delay>LONG_MAX);
+                        } while (delay>LONG_MAX||delay<LONG_MIN||msg_delay>LONG_MAX);
                         start_sloop_mode(&delay, &msg_delay, &temp_msg_delay, str, op_num);
                         break;
                     case '3':
@@ -75,7 +81,7 @@ int main() {
                         do {
                             write_multiplication_mode(op_num);
                             timers(&delay, &msg_delay);
-                        } while (op_num[0]>INT_MAX||op_num[1]>INT_MAX||op_num[0]<INT_MIN||op_num[1]<INT_MIN||delay>LONG_MAX||delay<LONG_MIN||msg_delay>LONG_MAX);
+                        } while (delay>LONG_MAX||delay<LONG_MIN||msg_delay>LONG_MAX);
                         start_mloop_mode(&delay, &msg_delay, &temp_msg_delay, str, op_num);
                         break;
                     case '4':
@@ -83,24 +89,24 @@ int main() {
                         do {
                             write_division_mode(op_num);
                             timers(&delay, &msg_delay);
-                        } while (op_num[0]>INT_MAX||op_num[1]>INT_MAX||op_num[0]<INT_MIN||op_num[1]<INT_MIN||delay>LONG_MAX||delay<LONG_MIN||msg_delay>LONG_MAX);
+                        } while (delay>LONG_MAX||delay<LONG_MIN||msg_delay>LONG_MAX);
                         start_dloop_mode(&delay, &msg_delay, &temp_msg_delay, str, op_num);
                         break;
-                    case '5':
+                    /*case '5':
                     case 'E':
                         do {
                             write_square_root_mode(op_num);
                             timers(&delay, &msg_delay);
-                        } while (op_num[0]>INT_MAX||op_num[0]<INT_MIN||delay>LONG_MAX||delay<LONG_MIN||msg_delay>LONG_MAX);
+                        } while (delay>LONG_MAX||delay<LONG_MIN||msg_delay>LONG_MAX);
                         start_srloop_mode(&delay, &msg_delay, &temp_msg_delay, str, op_num);
 
-                        break;
-                    case '6':
-                    case 'F':
+                        break;*/
+                    case '5':
+                    case 'E':
                         do {
                             write_expontetiation_mode(op_num);
                             timers(&delay, &msg_delay);
-                        } while (op_num[0]>INT_MAX||op_num[1]>INT_MAX||op_num[0]<INT_MIN||op_num[1]<INT_MIN||delay>LONG_MAX||delay<LONG_MIN||msg_delay>LONG_MAX);
+                        } while (delay>LONG_MAX||delay<LONG_MIN||msg_delay>LONG_MAX);
                         start_eloop_mode(&delay, &msg_delay, &temp_msg_delay, str, op_num);
                         break;
 
