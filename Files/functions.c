@@ -101,6 +101,7 @@ void modes(char *choice) {
 }
 void start_letloop(double *delay, double *msg_delay, double *temp_msg_delay, char *str) {
 	while ((*delay)>0) {
+        hotkey();
 		printf("Starting in %.1lf...",*delay);
 		(*delay)-=mil_del;
 		Sleep(mil);
@@ -112,6 +113,7 @@ void start_letloop(double *delay, double *msg_delay, double *temp_msg_delay, cha
 		pressCkey(VK_RETURN); // Presses the Enter btn
 		(*msg_delay)=(*temp_msg_delay);
 		while ((*msg_delay)>0) {
+            hotkey();
 			printf("Sending keys in %.1lf...", *msg_delay);
 			Sleep(mil);
 			(*msg_delay)-=mil_del;
@@ -121,6 +123,7 @@ void start_letloop(double *delay, double *msg_delay, double *temp_msg_delay, cha
 }
 void start_rloop(double *delay, double *msg_delay, double *temp_msg_delay, char *str, int *random_i, int *range) {
 	while ((*delay)>0) {
+        hotkey();
 		printf("Starting in %.1lf...",*delay);
 		(*delay)-=mil_del;
 		Sleep(mil);
@@ -136,6 +139,7 @@ void start_rloop(double *delay, double *msg_delay, double *temp_msg_delay, char 
 			pressCkey(VK_RETURN);
 			*msg_delay=(*temp_msg_delay);
 			while (*msg_delay>0) {
+			    hotkey();
 				printf("Sending keys in %.1lf...",*msg_delay);
 				Sleep(mil);
 				*msg_delay-=mil_del;
@@ -155,6 +159,7 @@ void start_floop(FILE *fp, double *delay, double *msg_delay, double *temp_msg_de
 		exit(EXIT_FAILURE);
 	}
 	while ((*delay)>0) {
+        hotkey();
 		printf("Starting in %.1lf...",*delay);
 		*delay-=mil_del;
 		Sleep(mil);
@@ -176,6 +181,7 @@ void start_floop(FILE *fp, double *delay, double *msg_delay, double *temp_msg_de
 		pressCkey(VK_RETURN);
 		*msg_delay=(*temp_msg_delay);
 		while (*msg_delay>0) {
+		    hotkey();
 			printf("Sending keys in %.1lf...",*msg_delay);
 			Sleep(mil);
 			*msg_delay-=mil_del;
@@ -318,6 +324,7 @@ void write_expontetiation_mode(int *op_num) {
 }
 void start_aloop_mode(double *delay, double *msg_delay, double *temp_msg_delay, char *str, int *op_num) {
     while ((*delay)>0) {
+        hotkey();
         printf("Starting in %.llf...",*delay);
         *delay-=mil_del;
         Sleep(mil);
@@ -331,6 +338,7 @@ void start_aloop_mode(double *delay, double *msg_delay, double *temp_msg_delay, 
         pressCkey(VK_RETURN);
         *msg_delay=(*temp_msg_delay);
         while (*msg_delay>0) {
+            hotkey();
             printf("Sending keys in %.1lf...",*msg_delay);
             Sleep(mil);
             *msg_delay-=mil_del;
@@ -340,6 +348,7 @@ void start_aloop_mode(double *delay, double *msg_delay, double *temp_msg_delay, 
 }
 void start_sloop_mode(double *delay, double *msg_delay, double *temp_msg_delay, char *str, int *op_num) {
     while (*delay>0) {
+        hotkey();
         printf("Starting in %.1lf...", *delay);
         *delay-=mil_del;
         Sleep(mil);
@@ -353,6 +362,7 @@ void start_sloop_mode(double *delay, double *msg_delay, double *temp_msg_delay, 
         pressCkey(VK_RETURN);
         *msg_delay=(*temp_msg_delay);
         while (*msg_delay>0) {
+            hotkey();
             printf("Sending keys in %.1lf...", *msg_delay);
             Sleep(mil);
             *msg_delay-=mil_del;
@@ -362,6 +372,7 @@ void start_sloop_mode(double *delay, double *msg_delay, double *temp_msg_delay, 
 }
 void start_mloop_mode(double *delay, double *msg_delay, double *temp_msg_delay, char *str, int *op_num) {
     while (*delay>0) {
+        hotkey();
         printf("Starting in %.1lf...", *delay);
         *delay-=mil_del;
         Sleep(mil);
@@ -375,6 +386,7 @@ void start_mloop_mode(double *delay, double *msg_delay, double *temp_msg_delay, 
         pressCkey(VK_RETURN);
         *msg_delay=(*temp_msg_delay);
         while (*msg_delay>0) {
+            hotkey();
             printf("Sending keys in %.1lf...",*msg_delay);
             Sleep(mil);
             *msg_delay-=mil_del;
@@ -384,6 +396,7 @@ void start_mloop_mode(double *delay, double *msg_delay, double *temp_msg_delay, 
 }
 void start_dloop_mode(double *delay, double *msg_delay, double *temp_msg_delay, char *str, int *op_num) {
     while (*delay>0) {
+        hotkey();
         printf("Starting in %.1lf...", *delay);
         *delay-=mil_del;
         Sleep(mil);
@@ -397,6 +410,7 @@ void start_dloop_mode(double *delay, double *msg_delay, double *temp_msg_delay, 
         pressCkey(VK_RETURN);
         *msg_delay=(*temp_msg_delay);
         while (*msg_delay>0) {
+            hotkey();
             printf("Sending keys in %.1lf...",*msg_delay);
             Sleep(mil);
             *msg_delay-=mil_del;
@@ -406,6 +420,7 @@ void start_dloop_mode(double *delay, double *msg_delay, double *temp_msg_delay, 
 }
 void start_srloop_mode(double *delay, double *msg_delay, double *temp_msg_delay, char *str, int *op_num) {
     while (*delay>0) {
+        hotkey();
         printf("Starting in %.1lf...", *delay);
         *delay-=mil_del;
         Sleep(mil);
@@ -419,6 +434,7 @@ void start_srloop_mode(double *delay, double *msg_delay, double *temp_msg_delay,
         pressCkey(VK_RETURN);
         *msg_delay=(*temp_msg_delay);
         while (*msg_delay>0) {
+            hotkey();
             printf("Sending keys in %.1lf...", *msg_delay);
             Sleep(mil);
             *msg_delay-=mil_del;
@@ -428,6 +444,7 @@ void start_srloop_mode(double *delay, double *msg_delay, double *temp_msg_delay,
 }
 void start_eloop_mode(double *delay, double *msg_delay, double *temp_msg_delay, char *str, int *op_num) {
     while (*delay>0) {
+        hotkey();
         printf("Starting in %.1lf...", *delay);
         *delay-=mil_del;
         Sleep(mil);
@@ -441,6 +458,7 @@ void start_eloop_mode(double *delay, double *msg_delay, double *temp_msg_delay, 
         pressCkey(VK_RETURN);
         *msg_delay=(*temp_msg_delay);
         while (*msg_delay>0) {
+            hotkey();
             printf("Sending keys in %.1lf...", *msg_delay);
             Sleep(mil);
             *msg_delay-=mil_del;
@@ -543,7 +561,7 @@ void hotkey_win_reg(void) {
     fflush(stdin);
     system("cls");
     sec_hotkey_vk_code=VkKeyScan(sec_hotkey);
-    hotkey_val=RegisterHotKey(NULL, 1, MOD_WIN | MOD_NOREPEAT, sec_hotkey_vk_code);
+    hotkey_val=RegisterHotKey(NULL, 1, MOD_WIN, sec_hotkey_vk_code);
     if (!hotkey_val) {
         printf("Error Registering Hotkey!\n");
         system("pause");

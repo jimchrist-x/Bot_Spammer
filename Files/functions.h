@@ -1,7 +1,7 @@
 #define SIZE 100000
 #define mil 100
 #define mil_del 0.1
-#define MOD_NOREPEAT 0x4000
+#define MOD_NOREPEAT 0x4000 // May be used when pressing Hotkey in function: hotkey()
 void pressKeyB(char mk);
 void pressKeys(char *string);
 char strup(char s);
