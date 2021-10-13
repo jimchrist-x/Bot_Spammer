@@ -35,3 +35,4 @@ void hotkey_alt_reg(void);
 void hotkey_shift_reg(void);
 void hotkey_win_reg(void);
 void hotkey(void);
+void click(double *delay, int clicks_per_sec);

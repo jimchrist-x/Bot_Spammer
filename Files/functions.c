@@ -91,7 +91,8 @@ void modes(char *choice) {
 	printf("\n\tB. WRITE_NUMBERS");
 	printf("\n\tC. WRITE_FILE");
 	printf("\n\tD. CUSTOM_COUNTER_MODE");
-	printf("\n\tE. SET_HOTKEY");
+	printf("\n\tE. AUTO_CLICKER");
+	printf("\n\tF. SET_HOTKEY");
 	printf("\n\n");
 	printf("\nCHOOSE MODE: ");
 	fscanf(stdin,"%c",choice);
@@ -587,5 +588,36 @@ void hotkey(void) {
         }
     }
 
+
+}
+
+void click (double *delay, int clicks_per_sec)
+{
+    show_time();
+    printf("\n");
+    printf("Bot idle time before startup (seconds): ");
+    scanf("%lf", delay);
+    system("cls");
+    fflush(stdin);
+
+    while (*delay>0) {
+        hotkey();
+        printf("Starting in %.1lf...", *delay);
+        *delay-=mil_del;
+        Sleep(mil);
+        system("cls");
+    }
+    while (1) {
+        hotkey();
+        INPUT Input={0};
+        Input.type = INPUT_MOUSE;
+        Input.mi.dwFlags  = MOUSEEVENTF_LEFTDOWN;
+        SendInput(1,&Input,sizeof(INPUT));
+        ZeroMemory(&Input,sizeof(INPUT));
+        Input.type = INPUT_MOUSE;
+        Input.mi.dwFlags = MOUSEEVENTF_LEFTUP;
+        SendInput(1,&Input,sizeof(INPUT));
+        Sleep(1000/clicks_per_sec);
+    }
 
 }

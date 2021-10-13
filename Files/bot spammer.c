@@ -17,7 +17,7 @@ int main() {
 	double delay, msg_delay,temp_msg_delay;
 	mpq_t op_num[2];
 	int range, random_i, i=0;
-
+    int clicks_per_sec=0;
 
 	for (i=0;i<2;i++) {
         mpq_init(op_num[i]);
@@ -26,7 +26,7 @@ int main() {
 	while (TRUE) {
         do {
             modes(&choice);
-        } while ((choice>'E'||choice<'A')&&(choice<'1'||choice>'5'));
+        } while ((choice>'F'||choice<'A')&&(choice<'1'||choice>'6'));
 
         switch(choice) {
             case '1':
@@ -118,6 +118,17 @@ int main() {
                 break;
             case '5':
             case 'E':
+                do {
+                    show_time();
+                    printf("\n");
+                    printf("Clicks per sec: ");
+                    scanf("%d", &clicks_per_sec);
+                    fflush(stdin);
+                    system("cls");
+                } while (clicks_per_sec>INT_MAX||clicks_per_sec<INT_MIN);
+                click(&delay, clicks_per_sec);
+            case '6':
+            case 'F':
                 do {
                     hotkey_modes(&choice3);
                 } while((choice3>'D'||choice3<'A')&&(choice3<'1'||choice3>'4'));
