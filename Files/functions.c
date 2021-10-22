@@ -152,7 +152,8 @@ void start_rloop(double *delay, double *msg_delay, double *temp_msg_delay, char 
 		srand(time(NULL));
 	}
 }
-void start_floop(FILE *fp, double *delay, double *msg_delay, double *temp_msg_delay, char *str, char *path) {
+void start_floop(FILE *fp, double *delay, double *msg_delay, double *temp_msg_delay, char *str, char *path)
+{
 	int i=0;
 	fp=fopen(path,"r");
 	if (!fp) {
@@ -489,7 +490,7 @@ void hotkey_modes(char *choice3) {
 		*choice3=strup(*choice3);
 	}
 }
-void hotkey_ctrl_reg(void) {
+void hotkey_ctrl_reg(FILE *fp) {
     BOOL hotkey_val;
 	char sec_hotkey;
 	UINT sec_hotkey_vk_code;
@@ -503,6 +504,7 @@ void hotkey_ctrl_reg(void) {
     system("cls");
     sec_hotkey_vk_code=VkKeyScan(sec_hotkey);
     hotkey_val=RegisterHotKey(NULL, 1, MOD_CONTROL | MOD_NOREPEAT, sec_hotkey_vk_code);
+    write_hotkey_file(fp, 1, sec_hotkey_vk_code);
     if (!hotkey_val) {
         printf("Error Registering Hotkey!\n");
         system("pause");
@@ -510,7 +512,7 @@ void hotkey_ctrl_reg(void) {
     }
 
 }
-void hotkey_alt_reg(void) {
+void hotkey_alt_reg(FILE *fp) {
     BOOL hotkey_val;
 	char sec_hotkey;
 	UINT sec_hotkey_vk_code;
@@ -524,6 +526,7 @@ void hotkey_alt_reg(void) {
     system("cls");
     sec_hotkey_vk_code=VkKeyScan(sec_hotkey);
     hotkey_val=RegisterHotKey(NULL, 1, MOD_ALT | MOD_NOREPEAT, sec_hotkey_vk_code);
+    write_hotkey_file(fp, 2, sec_hotkey_vk_code);
     if (!hotkey_val) {
         printf("Error Registering Hotkey!\n");
         system("pause");
@@ -532,7 +535,7 @@ void hotkey_alt_reg(void) {
 
 
 }
-void hotkey_shift_reg(void) {
+void hotkey_shift_reg(FILE *fp) {
     BOOL hotkey_val;
 	char sec_hotkey;
 	UINT sec_hotkey_vk_code;
@@ -546,6 +549,7 @@ void hotkey_shift_reg(void) {
     system("cls");
     sec_hotkey_vk_code=VkKeyScan(sec_hotkey);
     hotkey_val=RegisterHotKey(NULL, 1, MOD_SHIFT | MOD_NOREPEAT, sec_hotkey_vk_code);
+    write_hotkey_file(fp, 3, sec_hotkey_vk_code);
     if (!hotkey_val) {
         printf("Error Registering Hotkey!\n");
         system("pause");
@@ -554,7 +558,7 @@ void hotkey_shift_reg(void) {
 
 }
 
-void hotkey_win_reg(void) {
+void hotkey_win_reg(FILE *fp) {
     BOOL hotkey_val;
 	char sec_hotkey;
 	UINT sec_hotkey_vk_code;
@@ -568,6 +572,7 @@ void hotkey_win_reg(void) {
     system("cls");
     sec_hotkey_vk_code=VkKeyScan(sec_hotkey);
     hotkey_val=RegisterHotKey(NULL, 1, MOD_WIN, sec_hotkey_vk_code);
+    write_hotkey_file(fp, 4, sec_hotkey_vk_code);
     if (!hotkey_val) {
         printf("Error Registering Hotkey!\n");
         system("pause");
@@ -620,4 +625,29 @@ void click (double *delay, int clicks_per_sec)
         Sleep(1000/clicks_per_sec);
     }
 
+}
+
+
+void write_hotkey_file(FILE *fp, int opt, UINT vk_code) {
+
+    fp=fopen("hotkey.bin", "wb");
+    if(!fp) {
+            system("cls");
+            printf("\nError opening \"hotkey\" file!\n\n");
+            exit(0);
+    }
+    fseek(fp, 0, SEEK_SET);
+    fprintf(fp, "%d %d", opt, vk_code);
+    fclose(fp);
+}
+void read_hotkey_file(FILE *fp, int *opt, UINT *vk_code) {
+    fp=fopen("hotkey.bin", "rb");
+    if (!fp) {
+        return;
+    }
+    else {
+        fseek(fp, 0, SEEK_SET);
+        fscanf(fp, "%d %d", opt, vk_code);
+    }
+    fclose(fp);
 }
