@@ -614,6 +614,7 @@ void click (double *delay, int clicks_per_sec)
     }
     while (1) {
         hotkey();
+        printf("Clicking...");
         INPUT Input={0};
         Input.type = INPUT_MOUSE;
         Input.mi.dwFlags  = MOUSEEVENTF_LEFTDOWN;
@@ -623,6 +624,7 @@ void click (double *delay, int clicks_per_sec)
         Input.mi.dwFlags = MOUSEEVENTF_LEFTUP;
         SendInput(1,&Input,sizeof(INPUT));
         Sleep(1000/clicks_per_sec);
+        system("cls");
     }
 
 }
